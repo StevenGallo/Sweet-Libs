@@ -7,9 +7,7 @@
 Any app you make that allows for user input can be exploited by injecting malicious javascript if you do not properly 
 
 
-##CSRF
-
-###Cross-site request forgery
+### Cross-Site Request Forgery [(CSRF)](https://www.hacksplaining.com/exercises/csrf#)
 
 Forging http request to trick users into triggering unintended actions
 
@@ -51,7 +49,7 @@ Creating a a csurf middleware for CSRF token creation and validation adds a req.
 
 
 ###CODE EXAMPLE
-```js```
+```js
 var cookieParser = require('cookie-parser')
 var csrf = require('csurf')
 var bodyParser = require('body-parser')
@@ -79,7 +77,7 @@ app.post('/process', parseForm, csrfProtection, function (req, res) {
 ```
 
 ###CODE IN THE VIEW
-```js```
+```js
 <form action="/process" method="POST">
  <input type="hidden" name="_csrf" value="{{csrfToken}}">
 
