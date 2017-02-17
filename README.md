@@ -2,11 +2,6 @@
 
 ## Hacksplaining
 
-### Cross-Site Scripting [(XSS)](https://www.hacksplaining.com/exercises/xss-stored#)
-
-Any app you make that allows for user input can be exploited by injecting malicious javascript if you do not properly 
-
-
 ### Cross-Site Request Forgery [(CSRF)](https://www.hacksplaining.com/exercises/csrf#)
 
 Forging http request to trick users into triggering unintended actions
@@ -85,3 +80,11 @@ app.post('/process', parseForm, csrfProtection, function (req, res) {
  <button type="submit">Submit</button>
 </form>
 ```
+### Cross-Site Scripting [(XSS)](https://www.hacksplaining.com/exercises/xss-stored#)
+###HOW IT HAPPENS
+Any app you make that allows for user input can be exploited by injecting malicious javascript if you do not properly protect against an attack.
+
+A hacker can enter malicious JavaScript through a script tag into a form in your app that 
+
+###PROTECTION
+###CODE EXAMPLE
