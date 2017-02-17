@@ -15,19 +15,15 @@ Your server sees an http request from an authenticated user but the attacker can
 
 ###HOW IT HAPPENS
 
-Imagine you run twitter which is a micro-blogging service that allows users to post their opinions in 140 character messages
+Imagine you run a micro-blogging service that allows users to post their opinions in 140 character messages
 
 A hacker notices that the posts on your site are created using get requests meaning that all of the information is available in the url of the http request
 
 The hacker modifies the post creation url to include malicious data
 
-The hacker gets one of the users email addresses
+The hacker gets one of the users email addresses and sends the user a tempting link pointing to the malicious url
 
-The hacker sends the user a tempting link pointing to the malicious url
-
-The user clicks the link
-
-Your server interprets the request as the authenticated user writing post which is not what the user intended
+The user clicks the link and your server interprets the request as the authenticated user writing post which is not what the user intended
 
 The post is designed to draw other users in to click on it just like the first user
 
@@ -82,9 +78,18 @@ app.post('/process', parseForm, csrfProtection, function (req, res) {
 ```
 ### Cross-Site Scripting [(XSS)](https://www.hacksplaining.com/exercises/xss-stored#)
 ###HOW IT HAPPENS
-Any app you make that allows for user input can be exploited by injecting malicious javascript if you do not properly protect against an attack.
+Any app you make that allows for user input can be exploited by injecting malicious javascript if you do not properly protect against an attack. 
 
-A hacker can enter malicious JavaScript through a script tag into a form in your app that 
+A hacker can enter malicious JavaScript through a script tag in a form in your app that could do something such as steal another users cookie which they could then use for session hacking. The attacker abuses an editable field by inserting some JavaScript code, which is evaluated in the browser when another user visits that page.
 
 ###PROTECTION
+
+Unless your app is a content-management system, it is rare that you want your users to author raw HTML. Instead, you should escape all dynamic content coming from a data store, so the browser knows it is to be treated as the contents of HTML tags, as opposed to raw HTML. Most modern frameworks will escape dynamic content by default:
+
+
 ###CODE EXAMPLE
+
+Rails templates escape HTML by default, so anything that looks like the following is generally safe:
+```
+<%= contents %>
+```
